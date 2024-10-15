@@ -10,8 +10,8 @@
  * hyper-parameters in this implementation, but this approach may not be 
  * the best long-term solution.
  */
-#ifndef SKIP_GRAM_HYPER_PARAMETERS_HEADER_HH
-/* #include "hyper-parameters.hh" */
+#ifdef READ_TRAINED_SKIP_GRAM_WEIGHTS_TEST_APP_HH
+#include "../Skip-gram/lib/WordEmbedding-Algorithms/Word2Vec/Skip-gram/hyper-parameters.hh"
 #endif
 
 #ifndef READ_WEIGHTS_HEADER_HEADER_HH
@@ -28,12 +28,12 @@
     /* Adjusting line and token counts to account for an off-by-one error in the parser.\
     The parser seems to return one additional line and one extra token than expected,\
     so we subtract 1 from the total counts to ensure we process only the actual lines and tokens */\
-    cc_tokenizer::string_character_traits<char>::size_type r = p.get_total_number_of_lines();\
+    cc_tokenizer::string_character_traits<char>::size_type r = p.get_total_number_of_lines() - 0;\
     p.go_to_next_line();\
     /* Adjusting line and token counts to account for an off-by-one error in the parser.\
     The parser seems to return one additional line and one extra token than expected,\
     so we subtract 1 from the total counts to ensure we process only the actual lines and tokens */\
-    cc_tokenizer::string_character_traits<char>::size_type c = p.get_total_number_of_tokens();\
+    cc_tokenizer::string_character_traits<char>::size_type c = p.get_total_number_of_tokens() - 0;\
     p.reset(LINES);\
     try\
     {\
@@ -68,12 +68,12 @@
     /* Adjusting line and token counts to account for an off-by-one error in the parser.\
     The parser seems to return one additional line and one extra token than expected,\
     so we subtract 1 from the total counts to ensure we process only the actual lines and tokens */\
-    cc_tokenizer::string_character_traits<char>::size_type r = p.get_total_number_of_lines();\
+    cc_tokenizer::string_character_traits<char>::size_type r = p.get_total_number_of_lines() - 0;\
     p.go_to_next_line();\
     /* Adjusting line and token counts to account for an off-by-one error in the parser.\
     The parser seems to return one additional line and one extra token than expected,\
     so we subtract 1 from the total counts to ensure we process only the actual lines and tokens */\
-    cc_tokenizer::string_character_traits<char>::size_type c = p.get_total_number_of_tokens();\
+    cc_tokenizer::string_character_traits<char>::size_type c = p.get_total_number_of_tokens() - 0;\
     p.reset(LINES);\
     try\
     {\
