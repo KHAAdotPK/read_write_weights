@@ -1,6 +1,6 @@
 # Weight Filling Macros Library
 
-This library provides macros to read trained weights from files and store them in memory using `Numcy::Collective<double>` structures. The current macros `REAS_W1` and `READ_W2` are designed to read the respective weights and store them in a new instance of a composite data structure.
+This library provides macros to read trained weights from files and store them in memory using `Numcy::Collective<double>` structures. The current macros `READ_W1` and `READ_W2` are designed to read the respective weights and store them in a new instance of a composite data structure.
 
 ## Macros
 
@@ -30,9 +30,21 @@ This macro works similarly to `READ_W1`, but with a different orientation for ho
   - Initializes `w2` with dimensions based on the number of lines and tokens.
   - Fills the weights into `w2` by iterating through lines and tokens of the file, in a column-wise manner.
 
-## Upcoming Macros
+### `WRITE_W1(w1, f, v)`
+Writes the input weights (`w1`) to a file.
 
-~~In the near future, this library will include additional macros for writing the trained weights back to files. These macros will make it easier to save and load weight data for model deployment~~.
+- ***Parameters***:
+  - `w1`: A container holding the input weights.
+  - `f`: The file name where the weights will be written.
+  - `v`: The vocabulary instance.
+
+### `WRITE_W2(w2, f, v)`
+Writes the output weights (`w2`) to a file.
+
+- ***Parameters***:
+  - w2: A container holding the output weights.
+  - f: The file name where the weights will be written.
+  - v: The vocabulary instance.
 
 ## Example Usage
 
@@ -52,6 +64,7 @@ This macro works similarly to `READ_W1`, but with a different orientation for ho
     - csv
     - Numcy
     - sundry
+    - Skip-gram -OR- CBOW    
  */
 #include "../lib/csv/parser.hh"
 #include "../lib/Numcy/header.hh"
@@ -74,7 +87,14 @@ int main(int argc, char* argv[])
     READ_W1(w1trainedParser, W1);
     READ_W2(w2trainedParser, W2);
 
-    // Use w1 and w2 for further processing
+   
+    // Now let's write the weights back to files
+    corpus vocab; // Assuming vocab is filled appropriately
+    cc_tokenizer::String<char> w1OutputFile("w1output.txt");
+    cc_tokenizer::String<char> w2OutputFile("w2output.txt");
+
+    WRITE_W1(W1, w1OutputFile, vocab);
+    WRITE_W2(W2, w2OutputFile, vocab);
 
     return 0;
 }

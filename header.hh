@@ -11,7 +11,7 @@
  * the best long-term solution.
  */
 #ifdef READ_TRAINED_SKIP_GRAM_WEIGHTS_TEST_APP_HH
-#include "../Skip-gram/lib/WordEmbedding-Algorithms/Word2Vec/Skip-gram/hyper-parameters.hh"
+#include "../Skip-gram/lib/WordEmbedding-Algorithms/Word2Vec/Skip-gram/hyper-parameters.hh" 
 #endif
 
 #ifndef READ_WEIGHTS_HEADER_HEADER_HH
