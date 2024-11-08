@@ -18,6 +18,34 @@
 #define READ_WEIGHTS_HEADER_HEADER_HH
 
 /*
+    w, instance of Collective<E>. The w1 hould have the complete shape
+    f, name of the file. An instance of cc_tokenizer::String class 
+ */
+#define READ_W_BIN(w, f, t)\
+{\
+    try\
+    {\
+        w = cc_tokenizer::cooked_read<t>(f, w.getShape().getN());\
+    }\
+    catch(ala_exception& e)\
+    {\
+        std::cout<< "READ_W_BIN macro -> " << e.what() << std::endl;\
+    }\
+}\
+
+#define WRITE_W_BIN(w, f, t)\
+{\
+    try\
+    {\
+        cc_tokenizer::cooked_write<t>(f, w);\
+    }\
+    catch(ala_exception& e)\
+    {\
+        std::cout<< "WRITE_W_BIN macro -> " << e.what() << std::endl;\
+    }\
+}\
+
+/*
     @p,  instance of tokenizer
     @w1, instance of Collective<double>
  */
