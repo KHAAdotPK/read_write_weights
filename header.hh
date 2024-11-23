@@ -42,7 +42,8 @@
     }\
     catch(ala_exception& e)\
     {\
-        std::cout<< "WRITE_W_BIN macro -> " << e.what() << std::endl;\
+        cc_tokenizer::String<char> message = cc_tokenizer::String<char>("WRITE_W_BIN() macro -> ") + cc_tokenizer::String<char>(e.what());\
+        throw ala_exception(message);\
     }\
 }\
 
