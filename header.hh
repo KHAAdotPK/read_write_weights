@@ -223,6 +223,64 @@
     std::cout << "Expected line count: " << r << std::endl;\
 }\
 
+/*    
+    @w2, instance of Collective<double>, these weights are written to @f
+    @f,  name of file where @w2 are written to, instance of class String
+    @v,  vocabulary, instance of class corpus    
+ */
+#define WRITE_W2_TO_TEXT_FILE(W2, f, v)\
+{\
+    for (cc_tokenizer::string_character_traits<char>::size_type i = 0; i < W2.getShape().getNumberOfColumns() - 1; i++)\
+    {\
+        cc_tokenizer::String<char> line;\
+        line = v[i + INDEX_ORIGINATES_AT_VALUE] + cc_tokenizer::String<char>(" ");\
+        cc_tokenizer::string_character_traits<char>::size_type j = 0;\
+        for (; j < W2.getShape().getDimensionsOfArray().getNumberOfInnerArrays();)\
+        {\
+            cc_tokenizer::String<char> num(W2[j*W2.getShape().getNumberOfColumns() + i]);\
+            j = j + 1;\
+            if (j < W1.getShape().getDimensionsOfArray().getNumberOfInnerArrays())\
+            {\
+                line = line + num + cc_tokenizer::String<char>(" ");\
+            }\
+            else\
+            {\
+                line = line + num;\
+            }\
+        }\
+        line = line + cc_tokenizer::String<char>("\n");\
+        cc_tokenizer::cooked_write(f, line);\
+    }\
+}\
+
+/*    
+    @w1, instance of Collective<double>, these weights are written to @f
+    @f,  name of file where @w1 are written to, instance of class String
+    @v,  vocabulary, instance of class corpus    
+ */
+#define WRITE_W1_TO_TEXT_FILE(W1, f, v)\
+{\
+    for (cc_tokenizer::string_character_traits<char>::size_type i = 0; i < W1.getShape().getDimensionsOfArray().getNumberOfInnerArrays() - 1; i++)\
+    {\
+        cc_tokenizer::String<char> line = v[i + INDEX_ORIGINATES_AT_VALUE] + cc_tokenizer::String<char>(" ");\
+            cc_tokenizer::string_character_traits<char>::size_type j = 0;\
+            for (; j < W1.getShape().getNumberOfColumns();)\
+            {\
+                cc_tokenizer::String<char> num(W1[i*W1.getShape().getNumberOfColumns() + j]);\
+                j = j + 1;\
+                if (j < W1.getShape().getNumberOfColumns())\
+                {\
+                   line = line + num + cc_tokenizer::String<char>(" ");\
+                }\
+                else\
+                {\
+                    line = line + num;\
+                }\
+            }\
+            line = line + cc_tokenizer::String<char>("\n");\
+            cc_tokenizer::cooked_write(cc_tokenizer::String<char>(f), line);\
+        }\
+}\
 
 /*    
     @w1, instance of Collective<double>, these weights are written to @f
