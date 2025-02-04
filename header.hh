@@ -29,7 +29,7 @@
     }\
     catch(ala_exception& e)\
     {\
-        cc_tokenizer::String<char> message = cc_tokenizer::String<char>("READ_W_BIN() macro -> ") + cc_tokenizer::String<char>(e.what());\
+        cc_tokenizer::String<char> message = cc_tokenizer::String<char>("READ_W_BIN() macro -> ") + cc_tokenizer::String<char>(f) + cc_tokenizer::String<char>(" ") + cc_tokenizer::String<char>(e.what());\
         throw ala_exception(message);\
     }\
 }\
@@ -42,7 +42,7 @@
     }\
     catch(ala_exception& e)\
     {\
-        cc_tokenizer::String<char> message = cc_tokenizer::String<char>("WRITE_W_BIN() macro -> ") + cc_tokenizer::String<char>(e.what());\
+        cc_tokenizer::String<char> message = cc_tokenizer::String<char>("WRITE_W_BIN() macro -> ") + cc_tokenizer::String<char>(f) + cc_tokenizer::String<char>(" ") + cc_tokenizer::String<char>(e.what());\
         throw ala_exception(message);\
     }\
 }\
