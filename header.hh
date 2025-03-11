@@ -17,9 +17,29 @@
 #ifndef READ_WEIGHTS_HEADER_HEADER_HH
 #define READ_WEIGHTS_HEADER_HEADER_HH
 
+
 /*
     w, instance of Collective<E>. The w1 hould have the complete shape
     f, name of the file. An instance of cc_tokenizer::String class 
+    t,
+ */
+#define READ_W_BIN_NEW_ONE(w, f, t)\
+{\
+    try\
+    {\
+        w = cc_tokenizer::cooked_read<t>(f, w);\
+    }\
+    catch(ala_exception& e)\
+    {\
+        cc_tokenizer::String<char> message = cc_tokenizer::String<char>("READ_W_BIN() macro -> ") + cc_tokenizer::String<char>(f) + cc_tokenizer::String<char>(" ") + cc_tokenizer::String<char>(e.what());\
+        throw ala_exception(message);\
+    }\
+}\
+
+/*
+    w, instance of Collective<E>. The w1 hould have the complete shape
+    f, name of the file. An instance of cc_tokenizer::String class 
+    t,
  */
 #define READ_W_BIN(w, f, t)\
 {\
@@ -34,6 +54,11 @@
     }\
 }\
 
+/*
+    w, instance of Collective<E>. The w1 hould have the complete shape
+    f, name of the file. An instance of cc_tokenizer::String class 
+    t,
+ */
 #define WRITE_W_BIN(w, f, t)\
 {\
     try\
