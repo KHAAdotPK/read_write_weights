@@ -45,7 +45,7 @@
 {\
     try\
     {\
-        w = cc_tokenizer::cooked_read<t>(f, w.getShape().getN());\
+        w = cc_tokenizer::cooked_read<t>(f, w/*.getShape().getN()*/);\
     }\
     catch(ala_exception& e)\
     {\
