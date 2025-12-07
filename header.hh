@@ -253,7 +253,7 @@
     @f,  name of file where @w2 are written to, instance of class String
     @v,  vocabulary, instance of class corpus    
  */
-#define WRITE_W2_TO_TEXT_FILE(W2, f, v)\
+#define WRITE_W2_TO_TEXT_FILE(W1, W2, f, v)\
 {\
     for (cc_tokenizer::string_character_traits<char>::size_type i = 0; i < W2.getShape().getNumberOfColumns() - 1; i++)\
     {\
