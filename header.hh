@@ -12,11 +12,12 @@
  */
 #ifdef READ_TRAINED_SKIP_GRAM_WEIGHTS_TEST_APP_HH
 #include "../Skip-gram/lib/WordEmbedding-Algorithms/Word2Vec/Skip-gram/hyper-parameters.hh" 
+#elifdef READ_TRAINED_CBOW_WEIGHTS_TEST_APP_HH
+#include "../CBOW/lib/WordEmbedding-Algorithms/Word2Vec/CBOW/hyper-parameters.hh" 
 #endif
 
 #ifndef READ_WEIGHTS_HEADER_HEADER_HH
 #define READ_WEIGHTS_HEADER_HEADER_HH
-
 
 /*
     w, instance of Collective<E>. The w1 hould have the complete shape
@@ -45,7 +46,7 @@
 {\
     try\
     {\
-        w = cc_tokenizer::cooked_read<t>(f, w.getShape().getN());\
+        w = cc_tokenizer::cooked_read<t>(f, w/*.getShape().getN()*/);\
     }\
     catch(ala_exception& e)\
     {\
