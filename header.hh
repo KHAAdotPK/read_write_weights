@@ -12,7 +12,7 @@
  */
 #ifdef READ_TRAINED_SKIP_GRAM_WEIGHTS_TEST_APP_HH
 #include "../Skip-gram/lib/WordEmbedding-Algorithms/Word2Vec/Skip-gram/hyper-parameters.hh" 
-#elifdef READ_TRAINED_CBOW_WEIGHTS_TEST_APP_HH
+#elif defined READ_TRAINED_CBOW_WEIGHTS_TEST_APP_HH
 #include "../CBOW/lib/WordEmbedding-Algorithms/Word2Vec/CBOW/hyper-parameters.hh" 
 #endif
 
@@ -32,7 +32,7 @@
     }\
     catch(ala_exception& e)\
     {\
-        cc_tokenizer::String<char> message = cc_tokenizer::String<char>("READ_W_BIN() macro -> ") + cc_tokenizer::String<char>(f) + cc_tokenizer::String<char>(" ") + cc_tokenizer::String<char>(e.what());\
+        cc_tokenizer::String<char> message = cc_tokenizer::String<char>("READ_W_BIN_NEW_ONE() macro -> ") + cc_tokenizer::String<char>(f) + cc_tokenizer::String<char>(" ") + cc_tokenizer::String<char>(e.what());\
         throw ala_exception(message);\
     }\
 }\
