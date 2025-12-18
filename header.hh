@@ -254,18 +254,18 @@
     @f,  name of file where @w2 are written to, instance of class String
     @v,  vocabulary, instance of class corpus    
  */
-#define WRITE_W2_TO_TEXT_FILE(W1, W2, f, v)\
+#define WRITE_W2_TO_TEXT_FILE(W2, f, v)\
 {\
-    for (cc_tokenizer::string_character_traits<char>::size_type i = 0; i < W2.getShape().getNumberOfColumns() - 1; i++)\
+    for (cc_tokenizer::string_character_traits<char>::size_type i = 0; i < W2.getShape().getNumberOfColumns(); i++)\
     {\
         cc_tokenizer::String<char> line;\
-        line = v[i + INDEX_ORIGINATES_AT_VALUE] + cc_tokenizer::String<char>(" ");\
+        line = v[i + INDEX_ORIGINATES_AT_VALUE] + cc_tokenizer::String<char>(": ");\
         cc_tokenizer::string_character_traits<char>::size_type j = 0;\
-        for (; j < W2.getShape().getDimensionsOfArray().getNumberOfInnerArrays();)\
+        for (; j < W2.getShape().getNumberOfRows();)\
         {\
             cc_tokenizer::String<char> num(W2[j*W2.getShape().getNumberOfColumns() + i]);\
             j = j + 1;\
-            if (j < W1.getShape().getDimensionsOfArray().getNumberOfInnerArrays())\
+            if (j < W2.getShape().getNumberOfRows())\
             {\
                 line = line + num + cc_tokenizer::String<char>(" ");\
             }\
@@ -286,7 +286,7 @@
  */
 #define WRITE_W1_TO_TEXT_FILE(W1, f, v)\
 {\
-    for (cc_tokenizer::string_character_traits<char>::size_type i = 0; i < W1.getShape().getDimensionsOfArray().getNumberOfInnerArrays() - 1; i++)\
+    for (cc_tokenizer::string_character_traits<char>::size_type i = 0; i < W1.getShape().getNumberOfRows() /*- 1*/; i++)\
     {\
         cc_tokenizer::String<char> line = v[i + INDEX_ORIGINATES_AT_VALUE] + cc_tokenizer::String<char>(" ");\
             cc_tokenizer::string_character_traits<char>::size_type j = 0;\
@@ -305,7 +305,7 @@
             }\
             line = line + cc_tokenizer::String<char>("\n");\
             cc_tokenizer::cooked_write(cc_tokenizer::String<char>(f), line);\
-        }\
+    }\
 }\
 
 /*    
